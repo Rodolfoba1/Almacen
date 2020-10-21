@@ -9,6 +9,7 @@ public class Main
     public static void main(String[] args) 
     {
         Scanner leer = new Scanner(System.in);
+        Lector mp = new Lector();
         int op=0;
         do
         {
@@ -30,14 +31,11 @@ public class Main
                         boolean mp3=false;
                         for(File str : arc)
                         {
-                            System.out.println(str.getName()); //esta linea es para leer el nombre de la cancion, hay que cambiar a una forma de leerlos con bytes
-                            System.out.println(str.getPath()); //esta linea es para hallar la ruta del archivo ,p3
+                            mp.lectura(str.getPath());
                         }
                         if (mp3)
                             JOptionPane.showMessageDialog(null, "el archivo seleccionado no es MP3","ERROR", 0);
                     }
-                    //despues debe agregar los datos obtenidos de la cancion a un archivo
-                    
                     break;
                 case 2:
                     
