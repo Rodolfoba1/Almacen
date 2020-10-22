@@ -1,36 +1,31 @@
 package Reproductor;
-
-
-public class Lista {
-      private Nodo inicio;
-  
-    // Variable para registrar el tamaño de la lista.
+public class Lista 
+{
+    private nodo inicio;
     private int tamanio;
-    
-    public void Lista(){
+    public void Lista()
+    {
         inicio = null;
         tamanio = 0;
     }
-    
-     public boolean esVacia(){
+    public boolean esVacia()
+    {
         return inicio == null;
     }
-    public int getTamanio(){
+    public int getTamanio()
+    {
         return tamanio;
     }
-    
-     Nodo auxiliar;
-    
-      public Nodo getsiguinte()
+    nodo auxiliar;
+    public nodo getsiguinte()
     {
          return auxiliar.getSiguiente();
     }
-    public void setsiguiente(Nodo sig)
+    public void setsiguiente(nodo sig)
     {
         auxiliar=sig;
     }
-    
-     public String getartista()
+    public String getartista()
     {
         return auxiliar.getartista();
     }
@@ -42,11 +37,11 @@ public class Lista {
     {
         return auxiliar.getcancion();
     }
-    
-    public void agregarAlInicio(String path,String cancion,String artista,String album,String disquera,String letra, String pagA,String pagD,String genero,String track,String NoA,String año){
-       //nuevo nodo
-       Nodo nuevo = new Nodo();
-        // Agregaar al valor al nodo.
+    public void agregarAlInicio(String path,String cancion,String artista,String album,String disquera,String letra, String pagA,String pagD,String genero,String track,String NoA,String año)
+    {
+        // Define un nuevo nodo.
+        nodo nuevo = new nodo();
+        // Agrega al valor al nodo.
         nuevo.setpath(path);
         nuevo.setcancion(cancion);
         nuevo.setartista(artista);
@@ -58,13 +53,15 @@ public class Lista {
         nuevo.settrack(track);
         nuevo.setNoA(NoA);
         nuevo.setaño(año);
-        
         // Consulta si la lista esta vacia.
-        if (esVacia()) {
+        if (esVacia()) 
+        {
             // Inicializa la lista agregando como inicio al nuevo nodo.
             inicio = nuevo;
-        // Caso contrario va agregando los nodos al inicio de la lista.
-        } else{
+            // Caso contrario va agregando los nodos al inicio de la lista.
+        } 
+        else
+        {
             // Une el nuevo nodo con la lista existente.
             nuevo.setSiguiente(inicio);
             // Renombra al nuevo nodo como el inicio de la lista.
@@ -72,18 +69,19 @@ public class Lista {
         }
         // Incrementa el contador de tamaño de la lista.
         tamanio++;
-        
     }
-   
-      public void listar(){
+    public void listar()
+    {
         // Verifica si la lista contiene elementoa.
-        if (!esVacia()) {
+        if (!esVacia()) 
+        {
             // Crea una copia de la lista.
-            Nodo aux = inicio;
+            nodo aux = inicio;
             // Posicion de los elementos de la lista.
             int i = 0;
             // Recorre la lista hasta el final.
-            while(aux != null){
+            while(aux != null)
+            {
                 // Imprime en pantalla el valor del nodo.
                 System.out.println(i + ".[ " + aux.getcancion() + " ]" + " ->  ");
                 System.out.println(i + ".[ " + aux.getartista() + " ]" + " ->  ");
@@ -95,7 +93,7 @@ public class Lista {
                 System.out.println(i + ".[ " + aux.getpagD() + " ]" + " ->  ");
                 System.out.println(i + ".[ " + aux.getpath() + " ]" + " ->  ");
                 System.out.println(i + ".[ " + aux.gettrack() + " ]" + " ->  ");
-             
+
                 // Avanza al siguiente nodo.
                 aux = aux.getSiguiente();
                 // Incrementa el contador de la posión.
@@ -103,40 +101,31 @@ public class Lista {
             }
         }
     }
-      
-      public String rutaa(){
-      
-      
-      String rut = inicio.getpath();
-      
-      return rut;
-      
-      }
-             
-       public void llenar(){
+    public String rutaa()
+    {
+        String rut = inicio.getpath();
+        return rut;
+    }
+    public void llenar()
+    {
         // Verifica si la lista contiene elementoa.
-        if (!esVacia()) {
+        if (!esVacia()) 
+        {
             // Crea una copia de la lista.
-            Nodo aux = inicio;
+            nodo aux = inicio;
             // Posicion de los elementos de la lista.
-      
             // Recorre la lista hasta el final.
             while(aux != null){
-                // Imprime en pantalla el valor del nodo.
-              
-               aux.getcancion();
-                // Avanza al siguiente nodo.
-                aux = aux.getSiguiente();
-                // Incrementa el contador de la posión.
-             
+            // Imprime en pantalla el valor del nodo.
+            aux.getcancion();
+            // Avanza al siguiente nodo.
+            aux = aux.getSiguiente();
+            // Incrementa el contador de la posión.
             }
         }
-        
     }
-      
-       public Nodo getinicio(){
-       
-       return inicio;
-       }
-    
+    public nodo getinicio()
+    {
+        return inicio;
+    } 
 }
