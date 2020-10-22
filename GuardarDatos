@@ -1,106 +1,88 @@
-
 package Reproductor;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-public class GuardarDatos {
-    Lista x = new Lista();
-    public void escribir(Lista x)
+public class Guardadatos 
+{
+    Lista x=new Lista();
+    public void escribit(Lista x)
     {
-        try {
-            RandomAccessFile a =new RandomAccessFile("info.ggs","rw");
-            a.writeByte('P');
-            a.writeByte('P');
-            a.writeByte('P');
-            a.writeByte('0');
-            a.writeByte('0');
-            a.writeByte('0');
+        try 
+        {
+            RandomAccessFile j=new RandomAccessFile("infromacion.ggs","rw");
+            j.writeByte('P');
+            j.writeByte('P');
+            j.writeByte('P');
+            j.writeByte('0');
+            j.writeByte('0');
+            j.writeByte('0');
             String cancion;
-            String artista;
-            String album;
+            String Artista;
             int largo;
-            
+            String Album;
+
             x.setsiguiente(x.getinicio());
             while(x.auxiliar!=null)
             {   
                 if(x.getartista()!=null)
                 {
-                    
-                     artista=x.getartista();
-                     
-                     largo=artista.length();
-                    
-                      a.writeByte('0');
-                      a.writeByte((byte)largo);
-                      a.writeByte('0');
-                      for (int i = 0; i < artista.length(); i++) {
-                        a.writeByte(artista.charAt(i));
-                    }
-                      
+                    Artista=x.getartista();
+                    largo=Artista.length();
+                    j.writeByte('0');
+                    j.writeByte((byte)largo);
+                    j.writeByte('0');
+                    for (int i = 0; i < Artista.length(); i++) 
+                        j.writeByte(Artista.charAt(i));
                 }
                 else
                 {
-                    a.writeByte('0');
-                    a.writeByte('0');
-                    
+                    j.writeByte('0');
+                    j.writeByte('0');
                 }
                 if(x.getalbum()!=null)
                 {
-                   
-                     album=x.getalbum();
-                     largo=album.length();
-                     
-                      a.writeByte('0');
-                      a.writeByte((byte)largo);
-                      a.writeByte('0');
-                      for (int i = 0; i < album.length(); i++) {
-                        a.writeByte(album.charAt(i));
-                    }
+                    Album=x.getalbum();
+                    largo=Album.length();
+                    j.writeByte('0');
+                    j.writeByte((byte)largo);
+                    j.writeByte('0');
+                    for (int i = 0; i < Album.length(); i++) 
+                        j.writeByte(Album.charAt(i));
                 }
                 else
                 {
-                    
-                    a.writeByte('0');
-                    a.writeByte('0');
+                    j.writeByte('0');
+                    j.writeByte('0');
                 }
-                 if(x.getnombre()!=null)
+                if(x.getnombre()!=null)
                 {
-                    
-                     cancion=x.getnombre();
-                    
-                     largo=cancion.length();
-                    
-                      a.writeByte('0');
-                      a.writeByte((byte)largo);
-                      a.writeByte('0');
-                      for (int i = 0; i < cancion.length(); i++) {
-                        a.writeByte(cancion.charAt(i));
-                    }
-                      
+                    cancion=x.getnombre();
+                    largo=cancion.length();
+                    j.writeByte('0');
+                    j.writeByte((byte)largo);
+                    j.writeByte('0');
+                    for (int i = 0; i < cancion.length(); i++) 
+                        j.writeByte(cancion.charAt(i));
                 }
                 else
                 {
-                    a.writeByte('0');
-                    a.writeByte('0');
-                    
+                    j.writeByte('0');
+                    j.writeByte('0');
                 }
                 cancion=x.getnombre();
-                
                 x.setsiguiente(x.getsiguinte());
             }
-            a.close();
-           
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GuardarDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GuardarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            j.close();
+        } 
+        catch (FileNotFoundException ex) 
+        {
+            Logger.getLogger(Guardadatos.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Guardadatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 }
