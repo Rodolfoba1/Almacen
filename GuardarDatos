@@ -3,19 +3,34 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Guardadatos 
 {
-    public void escribir(ArrayList x)
+    public void escribir(ArrayList<Datos>x)
     {
         try 
         {
-            RandomAccessFile j = new RandomAccessFile("infromacion.ggs","rw");
+            RandomAccessFile j = new RandomAccessFile("Almacen.data","rw");
             for (int i=0; i < x.size(); i++) 
             {
-//                j.writeChars(x.get(i).getPistaNombre());
+                j.writeChars(x.get(i).getPistaNombre());
+                j.writeChars(x.get(i).getPistaDireccion());
+                j.writeByte(x.get(i).getPistaDuracionMin());
+                j.writeByte(x.get(i).getPistaDuracionSec());
+                j.writeChars(x.get(i).getPistaLetra());
+                
+                j.writeChars(x.get(i).getAlbum());
+                j.writeChars(x.get(i).getAlbumNumero());
+                j.writeShort(x.get(i).getAlbumAño());
+                
+                j.writeChars(x.get(i).getDisquera());
+                j.writeChars(x.get(i).getArtista());
+                j.writeChars(x.get(i).getGenero());
+                
+                j.writeChars(x.get(i).getEnlacesArtista());
+                j.writeChars(x.get(i).getEnlacesDisquera());
+                j.writeChars(x.get(i).getEnlacesOtros());
             }
             j.close();
         } 
