@@ -1,0 +1,140 @@
+package Reproductor;
+public class Datos 
+{
+    private String Disquera = "Desconocido";
+    private String Artista = "Desconocido";
+    private String Genero = "Desconocido";
+    
+    private String Album = "Desconocido";
+    private String AlbumNumero = "0";
+    private short AlbumAño = 0;
+    
+    private String PistaNombre = "Desconocido";
+    private String PistaDireccion = "Desconocido";
+    private Byte PistaDuracionMin = 0;
+    private Byte PistaDuracionSec = 0;
+    private String PistaLetra = "Desconocido";
+    
+    private String EnlacesArtista = "Desconocido";
+    private String EnlacesDisquera = "Desconocido";
+    private String EnlacesOtros = "Desconocido";
+    
+    public String getDisquera() 
+    {
+        return Disquera;
+    }
+    public void setDisquera(String Disquera) 
+    {
+        this.Disquera = Disquera;
+    }
+    public String getArtista() 
+    {
+        return Artista;
+    }
+    public void setArtista(String Artista) 
+    {
+        this.Artista = Artista;
+    }
+    public String getGenero() 
+    {
+        return Genero;
+    }
+    public void setGenero(String Genero) 
+    {
+        this.Genero = Genero;
+    }
+    
+    
+    public String getAlbum() 
+    {
+        return Album;
+    }
+    public void setAlbum(String Album) 
+    {
+        this.Album = Album;
+    }
+    public String getAlbumNumero() 
+    {
+        return AlbumNumero;
+    }
+    public void setAlbumNumero(String AlbumNumero) 
+    {
+        this.AlbumNumero = AlbumNumero;
+    }
+    public short getAlbumAño() 
+    {
+        return AlbumAño;
+    }
+    public void setAlbumAño(short AlbumAño) 
+    {
+        this.AlbumAño = AlbumAño;
+    }
+    
+    
+    public String getPistaDireccion() 
+    {
+        return PistaDireccion;
+    }
+    public void setPistaDireccion(String PistaDireccion) 
+    {
+        this.PistaDireccion = PistaDireccion;
+    }
+    public Byte getPistaDuracionMin() 
+    {
+        return PistaDuracionMin;
+    }
+    public void setPistaDuracionMin(Byte PistaDuracionMin) 
+    {
+        this.PistaDuracionMin = PistaDuracionMin;
+    }
+    public Byte getPistaDuracionSec() 
+    {
+        return PistaDuracionSec;
+    }
+    public void setPistaDuracionSec(Byte PistaDuracionSec) 
+    {
+        this.PistaDuracionSec = PistaDuracionSec;
+    }
+    public String getPistaLetra()
+    {
+        return PistaLetra;
+    }
+    public void setPistaLetra(String PistaLetra) 
+    {
+        this.PistaLetra = PistaLetra;
+    }
+    public String getPistaNombre() 
+    {
+        return PistaNombre;
+    }
+    public void setPistaNombre(String PistaNombre) 
+    {
+        this.PistaNombre = PistaNombre;
+    }
+    
+    
+    public String getEnlacesArtista() 
+    {
+        return EnlacesArtista;
+    }
+    public void setEnlacesArtista(String EnlacesArtista) 
+    {
+        this.EnlacesArtista = EnlacesArtista;
+    }
+    public String getEnlacesDisquera() 
+    {
+        return EnlacesDisquera;
+    }
+    public void setEnlacesDisquera(String EnlacesDisquera) 
+    {
+        this.EnlacesDisquera = EnlacesDisquera;
+    }
+    public String getEnlacesOtros() 
+    {
+        return EnlacesOtros;
+    }
+    public void setEnlacesOtros(String EnlacesOtros) 
+    {
+        this.EnlacesOtros = EnlacesOtros;
+    }
+}
