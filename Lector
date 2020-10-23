@@ -2,18 +2,37 @@ package Reproductor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Lector 
 {
-    Lista nuevaa = new Lista();
+    ArrayList<Datos> list = new ArrayList<>();
+    Datos nuevos = new Datos();
     public void mostrar()
     {
-        nuevaa.listar();
-    }
-    public Lista devolver()
-    {
-        return nuevaa;
+        for (int i=0; i < list.size(); i++) 
+        {
+            System.out.println("PistaNombre "+list.get(i).getPistaNombre());
+            System.out.println("PistaDireccion "+list.get(i).getPistaDireccion());
+            System.out.println("PistaDuracion "+list.get(i).getPistaDuracionMin()+":"+list.get(i).getPistaDuracionSec());
+            System.out.println("PistaLetra "+list.get(i).getPistaLetra());
+            System.out.println("");
+            System.out.println("Album "+list.get(i).getAlbum());
+            System.out.println("AlbumNumero "+list.get(i).getAlbumNumero());
+            System.out.println("AlbumAño "+list.get(i).getAlbumAño());
+            System.out.println("");
+            System.out.println("Disquera "+list.get(i).getDisquera());
+            System.out.println("Artista "+list.get(i).getArtista());
+            System.out.println("Genero "+list.get(i).getGenero());
+            System.out.println("");
+            System.out.println("EnlacesArtista "+list.get(i).getEnlacesArtista());
+            System.out.println("EnlacesDisquera "+list.get(i).getEnlacesDisquera());
+            System.out.println("EnlacesOtros "+list.get(i).getEnlacesOtros());
+            System.out.println("");
+            System.out.println("");
+        }
     }
     Guardadatos f = new Guardadatos();
     public void lectura(String ruta) 
@@ -238,13 +257,10 @@ public class Lector
                         {
                             a = archivo.readByte();
                             contador++;
-
                             b = archivo.readByte();
                             contador++;
-
                             c = archivo.readByte();
                             contador++;
-
                             d = archivo.readByte();
                             contador++;
                             if (a != 84 || b != 89 || c != 69 || d != 82) 
@@ -301,9 +317,6 @@ public class Lector
                             TCON = contador;///termina etiqueta TIT2
                         else 
                             TCON = -1;
-                        // System.out.println("TCON "+TCON+" " +archivo.readByte());
-                        ////////////////
-                        ///////////////
                         contador = 3;
                         archivo.seek(3);
                         a = 0;
@@ -339,9 +352,6 @@ public class Lector
                             TPOS = contador;///termina etiqueta TIT2
                         else 
                             TPOS = -1;
-                        // System.out.println("TPOS "+TPOS+" " +archivo.readByte());
-                        ////////////////
-                        ///////////////
                         contador = 3;
                         archivo.seek(3);
                         a = 0;
@@ -413,8 +423,6 @@ public class Lector
                             USLT = contador;///termina etiqueta TIT2
                         else 
                             USLT = -1;
-                        // System.out.println("USLT "+USLT+" " +archivo.readByte());
-                        ////////////////
                         contador = 3;
                         archivo.seek(3);
                         a = 0;
@@ -508,11 +516,10 @@ public class Lector
                         genero = genero + (char) aux;
                 }
                 // System.out.println("Genero " + genero);
+                nuevos.setGenero(genero);
             }
-            else 
-                //System.out.println("null");
-                genero = "Desconocido";
-                /////pagina del disquera
+//            else 
+//                genero = "Desconocido";
             String pagD = "";
             if (WPUB != -1) 
             {
@@ -530,11 +537,10 @@ public class Lector
                         pagD = pagD + (char) aux;
                 }
                 //System.out.println("Pagina disquera " + pagD);
+                nuevos.setEnlacesDisquera(pagD);
             } 
-            else 
-                //System.out.println("null");
-                pagD = "Desconocido";
-                /////pagina del artista
+//            else 
+//                pagD = "Desconocido";
             String pagA = "";
             if (WOAR != -1) 
             {
@@ -552,25 +558,16 @@ public class Lector
                         pagA = pagA + (char) aux;
                 }
                 //System.out.println("Pagina " + pagA);
+                nuevos.setEnlacesArtista(pagA);
             } 
-            else 
-                //System.out.println("null");
-                pagA = "Desconocido";
-            /////letra
+//            else 
+//                pagA = "Desconocido";
             String letra = "";
             if (USLT != -1) 
             {
                 archivo.seek(USLT);
                 int longitud = archivo.readInt() + 2;
                 byte aux = 0;
-                //                byte longitud=0;
-                //                for (int i = 0; i <= 3; i++) {
-                //                    longitud=archivo.readByte();
-                //                }
-                //                
-                //                for (int i = 0; i < 2; i++) {
-                //                    archivo.readByte();
-                //                }
                 for (int i = 0; i < longitud; i++) 
                 {
                     aux = archivo.readByte();
@@ -580,11 +577,10 @@ public class Lector
                         letra = letra + (char) aux;
                 }
                 //System.out.println("Letra " + letra);
+                nuevos.setPistaLetra(letra);
             } 
-            else 
-                //System.out.println("null");
-                letra = "Desconocido";
-            /////numero track
+//            else 
+//                letra = "Desconocido";
             String track = "";
             if (TRCK != -1) 
             {
@@ -602,11 +598,10 @@ public class Lector
                         track = track + (char) aux;
                 }
                 //System.out.println("Pista " + track);
+                
             } 
-            else 
-                //System.out.println("null");
-                track = "Desconocido";
-            /////año
+//            else 
+//                track = "Desconocido";
             String año = "";
             if (TYER != -1)
             {
@@ -624,11 +619,10 @@ public class Lector
                         año = año + (char) aux;
                 }
                 //System.out.println("año " + año);
+                nuevos.setAlbumAño(aux);
             } 
-            else 
-                //System.out.println("null");
-                año = "Desconocido";
-            /////no album
+//            else 
+//                año = "Desconocido";
             String NoA = "";
             if (TPOS != -1) 
             {
@@ -645,12 +639,11 @@ public class Lector
                     if (aux > 31 && aux < 124) 
                         NoA = NoA + (char) aux;
                 }
-                System.out.println("No. Album " + NoA);
+//                System.out.println("No. Album " + NoA);
+                nuevos.setAlbumNumero(NoA);
             } 
-            else 
-                //System.out.println("null");
-                NoA = "Desconocido";
-            ///////////album
+//            else 
+//                NoA = "Desconocido";
             String alb = "";
             if (TALB != -1) 
             {
@@ -668,33 +661,10 @@ public class Lector
                         alb = alb + (char) aux;
                 }
                 //System.out.println("album " + alb);
+                nuevos.setAlbum(alb);
             } 
-            else 
-                //System.out.println("null");
-                alb = "Desconocido";
-            //////artista2;
-            String art2 = "";
-            if (TPE2 != -1) 
-            {
-                archivo.seek(TPE2);
-                byte aux = 0;
-                byte longitud = 0;
-                for (int i = 0; i <= 3; i++) 
-                    longitud = archivo.readByte();
-                for (int i = 0; i < 2; i++) 
-                    archivo.readByte();
-                for (int i = 0; i < longitud; i++) 
-                {
-                    aux = archivo.readByte();
-                    if (aux > 31 && aux < 124) 
-                        art2 = art2 + (char) aux;
-                }
-                //System.out.println("artsta 2 " + art2);
-            } 
-            else 
-                //System.out.println("null");
-                art2 = "Desconocido";
-            //////artista;
+//            else 
+//                alb = "Desconocido";
             String art1 = "";
             if (TPE1 != -1) 
             {
@@ -712,11 +682,10 @@ public class Lector
                         art1 = art1 + (char) aux;
                 }
                 //System.out.println("artista 1 " + art1);
+                nuevos.setArtista(art1);
             } 
-            else 
-                // System.out.println("null ");
-                art1 = "Desconocido";
-            //////obtener cancion;
+//            else 
+//                art1 = "Desconocido";
             String cancion = "";
             if (TIT2 != -1) 
             {
@@ -734,11 +703,10 @@ public class Lector
                         cancion = cancion + (char) aux;
                 }
                 //System.out.println("Cancion " + cancion);
+                nuevos.setPistaNombre(cancion);
             } 
-            else 
-                //System.out.println("null");
-                cancion = "Desconocido";
-            //////disquera;
+//            else 
+//                cancion = "Desconocido";
             String disquera = "";
             if (TPUB != -1) 
             {
@@ -756,11 +724,12 @@ public class Lector
                         disquera = disquera + (char) aux;
                 }
                 //System.out.println("Disquera " + disquera);
+                nuevos.setDisquera(disquera);
             } 
             else 
-            //System.out.println("null");
-            disquera = "Desconocido";
-            nuevaa.agregarAlInicio(ruta,cancion,art1,alb,disquera,letra,pagA,pagD,genero,track,NoA,año);
+                disquera = "Desconocido";
+            //nuevaa.agregarAlInicio(ruta,cancion,art1,alb,disquera,letra,pagA,pagD,genero,track,NoA,año);
+            list.add(nuevos);
             archivo.close();
         }
         catch (FileNotFoundException ex) 
@@ -771,6 +740,6 @@ public class Lector
         {
             Logger.getLogger(Lector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        f.escribit(nuevaa);
+        f.escribir(list);
     }
 }
