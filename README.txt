@@ -5,10 +5,10 @@ Juda Israel Mejia Garcia 16434-16
 Nombre y versión de SO utilizado para la compilación 
 Windows 10 pro version 19042.572
 
-al momento de ejecutar el programa aparece un pequeño menu
-en la consola con tres opciones, "Agregar, Mostrar y Salir"
-al momento de seleccionar agregar aparecera una ventana que
-deja visualizar los archivos de la computadora, el programa
-solo deja seleccionar archivos mp3.
-Cuando se selecciona Mostrar aparece la lista ingresada de 
-archivos mp3
+Al momento de inicializar el programa aparece una ventana
+con las opciones "Insertar", "Mostrar", "Modificar", "Buscar"
+y "Eliminar", se tuvo un problema al momento de querer conectar
+el programa hecho por Juda y la parte de Rodolfo se tuvo un
+problema y el branch en el que estban los commits fueron
+borrados, por lo que el programa tuvo que ser resubido por
+Judá.
